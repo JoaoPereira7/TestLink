@@ -22,5 +22,10 @@ public class Utils {
 	public static <T> T Na(Class<T> classe) {
 		return PageFactory.initElements(driver, classe);
 	}
+	
+	public static void capturarTela(Scenario scenario) {
+		final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+		scenario.embed(screenshot, "image/png");
+	}
 
 }
